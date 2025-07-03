@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -101,10 +101,14 @@ export function Analytics() {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white p-4 border border-slate-200 rounded-lg shadow-lg">
-          <p className="font-medium text-slate-900 mb-2">{`Time: ${label}`}</p>
+        <div className="bg-white p-2 sm:p-4 border border-slate-200 rounded-lg shadow-lg">
+          <p className="font-medium text-sm sm:text-base text-slate-900 mb-1 sm:mb-2">{`Time: ${label}`}</p>
           {payload.map((entry: any, index: number) => (
-            <p key={index} style={{ color: entry.color }} className="text-sm">
+            <p
+              key={index}
+              style={{ color: entry.color }}
+              className="text-xs sm:text-sm"
+            >
               {`${entry.dataKey}: ${entry.value}`}
             </p>
           ))}
@@ -138,11 +142,13 @@ export function Analytics() {
   const renderChart = () => {
     if (analyticsData.length === 0) {
       return (
-        <div className="h-80 flex items-center justify-center text-slate-500">
+        <div className="h-60 sm:h-80 flex items-center justify-center text-slate-500">
           <div className="text-center">
-            <TrendingUp className="w-12 h-12 mx-auto mb-4 text-slate-400" />
-            <p className="text-lg">No analytics data available</p>
-            <p className="text-sm">Ingest some logs to see analytics</p>
+            <TrendingUp className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-4 text-slate-400" />
+            <p className="text-sm sm:text-lg">No analytics data available</p>
+            <p className="text-xs sm:text-sm">
+              Ingest some logs to see analytics
+            </p>
           </div>
         </div>
       );
@@ -161,12 +167,14 @@ export function Analytics() {
             <XAxis
               dataKey="time"
               stroke="#64748b"
-              fontSize={12}
+              fontSize={10}
+              sm:fontSize={12}
               tickLine={false}
             />
             <YAxis
               stroke="#64748b"
-              fontSize={12}
+              fontSize={10}
+              sm:fontSize={12}
               tickLine={false}
               axisLine={false}
             />
@@ -197,12 +205,14 @@ export function Analytics() {
             <XAxis
               dataKey="time"
               stroke="#64748b"
-              fontSize={12}
+              fontSize={10}
+              sm:fontSize={12}
               tickLine={false}
             />
             <YAxis
               stroke="#64748b"
-              fontSize={12}
+              fontSize={10}
+              sm:fontSize={12}
               tickLine={false}
               axisLine={false}
             />
@@ -213,7 +223,8 @@ export function Analytics() {
               dataKey="critical"
               stroke={COLORS.critical}
               strokeWidth={2}
-              dot={{ r: 4 }}
+              dot={{ r: 2 }}
+              sm:dot={{ r: 4 }}
               name="Critical"
             />
             <Line
@@ -221,7 +232,8 @@ export function Analytics() {
               dataKey="error"
               stroke={COLORS.error}
               strokeWidth={2}
-              dot={{ r: 4 }}
+              dot={{ r: 2 }}
+              sm:dot={{ r: 4 }}
               name="Error"
             />
             <Line
@@ -229,7 +241,8 @@ export function Analytics() {
               dataKey="warning"
               stroke={COLORS.warning}
               strokeWidth={2}
-              dot={{ r: 4 }}
+              dot={{ r: 2 }}
+              sm:dot={{ r: 4 }}
               name="Warning"
             />
             <Line
@@ -237,7 +250,8 @@ export function Analytics() {
               dataKey="info"
               stroke={COLORS.info}
               strokeWidth={2}
-              dot={{ r: 4 }}
+              dot={{ r: 2 }}
+              sm:dot={{ r: 4 }}
               name="Info"
             />
             <Line
@@ -245,7 +259,8 @@ export function Analytics() {
               dataKey="debug"
               stroke={COLORS.debug}
               strokeWidth={2}
-              dot={{ r: 4 }}
+              dot={{ r: 2 }}
+              sm:dot={{ r: 4 }}
               name="Debug"
             />
           </RechartsLineChart>
@@ -258,12 +273,14 @@ export function Analytics() {
             <XAxis
               dataKey="time"
               stroke="#64748b"
-              fontSize={12}
+              fontSize={10}
+              sm:fontSize={12}
               tickLine={false}
             />
             <YAxis
               stroke="#64748b"
-              fontSize={12}
+              fontSize={10}
+              sm:fontSize={12}
               tickLine={false}
               axisLine={false}
             />
@@ -314,9 +331,9 @@ export function Analytics() {
 
       case "pie":
         return (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-80">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-60 sm:h-80">
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-center">
+              <h4 className="text-sm sm:text-lg font-semibold mb-2 sm:mb-4 text-center">
                 Distribution (Pie Chart)
               </h4>
               <ResponsiveContainer width="100%" height="100%">
@@ -325,7 +342,8 @@ export function Analytics() {
                     data={pieData}
                     cx="50%"
                     cy="50%"
-                    outerRadius={80}
+                    outerRadius={40}
+                    sm:outerRadius={80}
                     dataKey="value"
                     label={({ name, percent }) =>
                       `${name} ${(percent * 100).toFixed(0)}%`
@@ -340,7 +358,7 @@ export function Analytics() {
               </ResponsiveContainer>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-center">
+              <h4 className="text-sm sm:text-lg font-semibold mb-2 sm:mb-4 text-center">
                 Radial Distribution
               </h4>
               <ResponsiveContainer width="100%" height="100%">
@@ -348,10 +366,15 @@ export function Analytics() {
                   cx="50%"
                   cy="50%"
                   innerRadius="10%"
-                  outerRadius="80%"
+                  outerRadius={40}
+                  sm:outerRadius={80}
                   data={radialData}
                 >
-                  <RadialBar dataKey="uv" cornerRadius={10} />
+                  <RadialBar
+                    dataKey="uv"
+                    cornerRadius={5}
+                    sm:cornerRadius={10}
+                  />
                   <Tooltip />
                 </RadialBarChart>
               </ResponsiveContainer>
@@ -365,13 +388,13 @@ export function Analytics() {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="space-y-2">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+      <div className="space-y-1 sm:space-y-2">
+        <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
           Analytics Dashboard
         </h1>
-        <p className="text-slate-600">
+        <p className="text-sm sm:text-base text-slate-600">
           Visual analytics and interactive charts showing log distribution
           patterns and trends over time.
         </p>
@@ -379,76 +402,76 @@ export function Analytics() {
 
       <Card>
         <CardHeader>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
             <div>
               <CardTitle className="flex items-center space-x-2">
-                <TrendingUp className="h-5 w-5 text-blue-600" />
-                <span>Log Analytics Visualization</span>
+                <TrendingUp className="h-4 sm:h-5 w-4 sm:w-5 text-blue-600" />
+                <span className="text-base sm:text-lg">
+                  Log Analytics Visualization
+                </span>
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-xs sm:text-sm">
                 Interactive charts with real-time data updates
               </CardDescription>
             </div>
 
-            <div className="flex items-center space-x-3">
-              <div className="flex items-center space-x-1 bg-slate-100 rounded-lg p-1">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 mt-2 sm:mt-0 w-full lg:w-56">
+              <div className="flex sm:flex-row lg:flex-row sm:items-center gap-2 sm:gap-1 bg-slate-100 rounded-lg p-1 w-full">
                 <Button
                   onClick={() => setChartType("bar")}
                   variant={chartType === "bar" ? "default" : "ghost"}
                   size="sm"
+                  className="flex-1 sm:flex-none"
                 >
-                  <BarChart3 className="w-4 h-4 mr-1" />
+                  <BarChart3 className="w-3 sm:w-4 h-3 sm:h-4 mr-1" />
                   Bar
                 </Button>
+
                 <Button
                   onClick={() => setChartType("line")}
                   variant={chartType === "line" ? "default" : "ghost"}
                   size="sm"
+                  className="flex-1 sm:flex-none"
                 >
-                  <LineChart className="w-4 h-4 mr-1" />
+                  <LineChart className="w-3 sm:w-4 h-3 sm:h-4 mr-1" />
                   Line
                 </Button>
+
                 <Button
                   onClick={() => setChartType("area")}
                   variant={chartType === "area" ? "default" : "ghost"}
                   size="sm"
+                  className="flex-1 sm:flex-none"
                 >
-                  <Activity className="w-4 h-4 mr-1" />
+                  <Activity className="w-3 sm:w-4 h-3 sm:h-4 mr-1" />
                   Area
                 </Button>
-                <Button
-                  onClick={() => setChartType("pie")}
-                  variant={chartType === "pie" ? "default" : "ghost"}
-                  size="sm"
-                >
-                  <PieChart className="w-4 h-4 mr-1" />
-                  Pie
-                </Button>
               </div>
-
+              {/* 
               <Button
                 onClick={fetchAnalyticsData}
                 disabled={loading}
                 variant="outline"
                 size="sm"
+                className="w-full sm:w-auto mt-2 sm:mt-0"
               >
-                <Calendar className="w-4 h-4 mr-2" />
+                <Calendar className="w-3 sm:w-4 h-3 sm:h-4 mr-1 sm:mr-2" />
                 Refresh
-              </Button>
+              </Button> */}
             </div>
           </div>
         </CardHeader>
 
         <CardContent>
           {loading ? (
-            <div className="h-80 flex items-center justify-center">
-              <div className="flex items-center space-x-3 text-slate-600">
-                <div className="w-6 h-6 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin"></div>
+            <div className="h-60 sm:h-80 flex items-center justify-center">
+              <div className="flex items-center space-x-2 sm:space-x-3 text-sm sm:text-base text-slate-600">
+                <div className="w-5 sm:w-6 h-5 sm:h-6 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin"></div>
                 <span>Loading analytics...</span>
               </div>
             </div>
           ) : (
-            <div className="h-80">
+            <div className="h-60 sm:h-80">
               <ResponsiveContainer width="100%" height="100%">
                 {renderChart()}
               </ResponsiveContainer>
@@ -470,7 +493,7 @@ export function Analytics() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2 sm:gap-4">
               {Object.entries(COLORS).map(([level, color]) => {
                 const total = analyticsData.reduce(
                   (sum, item) =>
@@ -492,22 +515,28 @@ export function Analytics() {
                 return (
                   <div
                     key={level}
-                    className="text-center p-4 rounded-lg border"
+                    className="text-center p-2 sm:p-4 rounded-lg border"
                     style={{
                       borderColor: color + "40",
                       backgroundColor: color + "10",
                     }}
                   >
-                    <div className="text-2xl font-bold" style={{ color }}>
+                    <div
+                      className="text-xl sm:text-2xl font-bold"
+                      style={{ color }}
+                    >
                       {total}
                     </div>
                     <div
-                      className="text-sm font-medium capitalize"
+                      className="text-xs sm:text-sm font-medium capitalize"
                       style={{ color }}
                     >
                       {level}
                     </div>
-                    <Badge variant="outline" className="mt-1">
+                    <Badge
+                      variant="outline"
+                      className="mt-1 text-xs sm:text-sm"
+                    >
                       {percentage}%
                     </Badge>
                   </div>
@@ -518,16 +547,18 @@ export function Analytics() {
         </Card>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
           <CardHeader>
-            <CardTitle className="text-blue-900">Total Data Points</CardTitle>
-            <CardDescription className="text-blue-700">
+            <CardTitle className="text-blue-900 text-lg sm:text-xl">
+              Total Data Points
+            </CardTitle>
+            <CardDescription className="text-blue-700 text-sm sm:text-base">
               Number of time intervals analyzed
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-blue-900">
+            <div className="text-2xl sm:text-3xl font-bold text-blue-900">
               {analyticsData.length}
             </div>
           </CardContent>
@@ -535,13 +566,15 @@ export function Analytics() {
 
         <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200">
           <CardHeader>
-            <CardTitle className="text-green-900">Peak Activity</CardTitle>
-            <CardDescription className="text-green-700">
+            <CardTitle className="text-green-900 text-lg sm:text-xl">
+              Peak Activity
+            </CardTitle>
+            <CardDescription className="text-green-700 text-sm sm:text-base">
               Highest log volume in single interval
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-green-900">
+            <div className="text-2xl sm:text-3xl font-bold text-green-900">
               {Math.max(...analyticsData.map((item) => item.total || 0))}
             </div>
           </CardContent>
@@ -549,13 +582,15 @@ export function Analytics() {
 
         <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
           <CardHeader>
-            <CardTitle className="text-purple-900">Average Rate</CardTitle>
-            <CardDescription className="text-purple-700">
+            <CardTitle className="text-purple-900 text-lg sm:text-xl">
+              Average Rate
+            </CardTitle>
+            <CardDescription className="text-purple-700 text-sm sm:text-base">
               Average logs per time interval
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-purple-900">
+            <div className="text-2xl sm:text-3xl font-bold text-purple-900">
               {analyticsData.length > 0
                 ? Math.round(
                     analyticsData.reduce(
