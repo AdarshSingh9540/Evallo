@@ -10,7 +10,7 @@ export const useWebSocket = ({ onNewLog }: UseWebSocketProps) => {
   const socketRef = useRef<Socket | null>(null);
 
   useEffect(() => {
-    socketRef.current = io("http://localhost:3001", {
+    socketRef.current = io("https://evallo-hab3.onrender.com", {
       transports: ["websocket"],
     });
 
