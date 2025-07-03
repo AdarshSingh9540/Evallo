@@ -5,6 +5,10 @@ A full-stack tool for real-time log ingestion and querying. It uses modern web t
 ## LIVE DEPLOYED WEBSITE
 https://evallo-eight.vercel.app/
 
+## Frontend Deployed on Vercel = https://evallo-eight.vercel.app/
+## Backend Deployed on Render = https://evallo-hab3.onrender.com/api
+
+
 ## Command to setup locally
 # 1. Clone the repository
 git clone https://github.com/AdarshSingh9540/Evallo
@@ -57,9 +61,9 @@ yarn dev
 - Docker - added  Dockerfile and docker-compose.yml file that 
 allows the entire full-stack application (backend and frontend) to be built and run 
 with a single docker-compose up command.
-- Basic Analytics View: Add a small dashboard component to the UI that displays 
-a simple chart (e.g., using a library like Chart.js or Recharts) showing the count of 
-logs by level over the currently filtered time range. 
+- Basic Analytics View: Added chart/graph using rechartjs for displaying Analytics.
+
+
 
 ## Log Schema
 
