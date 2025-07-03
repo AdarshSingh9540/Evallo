@@ -2,9 +2,26 @@
 
 A full-stack tool for real-time log ingestion and querying. It uses modern web tech, offers a clean UI inspired by Grafana and Datadog, and supports easy Docker deployment.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Node.js](https://img.shields.io/badge/Node.js-v18-green)](https://nodejs.org/)
-[![React](https://img.shields.io/badge/React-18-blue)](https://react.dev/)
+## LIVE DEPLOYED WEBSITE
+https://evallo-eight.vercel.app/
+
+## Command to setup locally
+# 1. Clone the repository
+git clone https://github.com/AdarshSingh9540/Evallo
+
+# 2. Navigate into the project directory
+cd Evallo
+
+# 3. Install dependencies
+npm install
+# or
+yarn install
+
+# 4. Start the development server
+npm run dev
+# or
+yarn dev
+
 
 ## Features
 
@@ -20,7 +37,7 @@ A full-stack tool for real-time log ingestion and querying. It uses modern web t
 
 - **Backend**: Node.js, Express.js, Socket.IO, JSON storage, CORS.
 - **Frontend**: React 18, TypeScript, Tailwind CSS, Recharts, Lucide React.
-- **DevOps**: Docker, Docker Compose, Nginx, multi-stage builds.
+- **DevOps**: Docker, Docker Compose.
 
 ## API Endpoints
 
@@ -32,6 +49,17 @@ A full-stack tool for real-time log ingestion and querying. It uses modern web t
 - `GET /api/health`: Check system health.
 - `GET /api/analytics/logs-by-level`: Get chart data for analytics.
 - WebSocket event: `newLog` for real-time updates.
+
+
+## Bonus Points
+
+- use socket connection for real time upadtion of log
+- Docker - added  Dockerfile and docker-compose.yml file that 
+allows the entire full-stack application (backend and frontend) to be built and run 
+with a single docker-compose up command.
+- Basic Analytics View: Add a small dashboard component to the UI that displays 
+a simple chart (e.g., using a library like Chart.js or Recharts) showing the count of 
+logs by level over the currently filtered time range. 
 
 ## Log Schema
 

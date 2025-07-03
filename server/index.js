@@ -299,7 +299,7 @@ app.get('/api/health', (req, res) => {
 
 initializeDB().then(() => {
   server.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
   });
 }).catch(() => {
   process.exit(1);
