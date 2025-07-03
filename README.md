@@ -5,8 +5,10 @@ A full-stack tool for real-time log ingestion and querying. It uses modern web t
 ## LIVE DEPLOYED WEBSITE
 https://evallo-eight.vercel.app/
 
-## Frontend Deployed on Vercel = https://evallo-eight.vercel.app/
-## Backend Deployed on Render = https://evallo-hab3.onrender.com/api
+## Frontend Deployed on Vercel 
+ -  https://evallo-eight.vercel.app/
+## Backend Deployed on Render 
+ -  https://evallo-hab3.onrender.com/
 
 
 ## Command to setup locally
