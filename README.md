@@ -1,6 +1,11 @@
 # Log Ingestion & Querying System
 
-A full-stack tool for real-time log ingestion and querying. It uses modern web tech, offers a clean UI inspired by Grafana and Datadog, and supports easy Docker deployment.
+A full-stack tool for real-time log ingestion and querying.
+It uses modern web technologies, offers a clean UI inspired by Grafana and Datadog, and supports easy Docker deployment.
+
+Fully responsive for both mobile and desktop screens.
+
+Due to time constraints, I wasn’t able to fully optimize the codebase. Given more time, I would definitely improve it further.
 
 ## LIVE DEPLOYED WEBSITE
 https://evallo-eight.vercel.app/
@@ -28,6 +33,8 @@ npm run dev
 # or
 yarn dev
 
+## Folder Structure
+![alt text](image.png)
 
 ## Features
 
@@ -41,9 +48,9 @@ yarn dev
 
 ## Tech Stack
 
-- **Backend**: Node.js, Express.js, Socket.IO, JSON storage, CORS.
-- **Frontend**: React 18, TypeScript, Tailwind CSS, Recharts, Lucide React.
-- **DevOps**: Docker, Docker Compose.
+- Backend: Node.js, Express.js, Socket.IO, JSON storage, CORS.
+- Frontend: React 18, TypeScript, Tailwind CSS, Recharts, Lucide React.
+- DevOps: Docker, Docker Compose, Render, Vercel.
 
 ## API Endpoints
 
@@ -59,7 +66,7 @@ yarn dev
 
 ## Bonus Points
 
-- use socket connection for real time upadtion of log
+- use socket connection for real time updation of log
 - Docker - added  Dockerfile and docker-compose.yml file that 
 allows the entire full-stack application (backend and frontend) to be built and run 
 with a single docker-compose up command.
